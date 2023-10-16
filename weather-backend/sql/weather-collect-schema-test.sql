@@ -30,7 +30,11 @@ create table app_user_role (
 create table weather_collection (
     weather_collection_id int primary key auto_increment,
     `name` varchar(50) not null,
-    `description` varchar(250)
+    `description` varchar(250),
+    app_user_id int not null,
+        constraint fk_collection_app_user_id
+            foreign key (app_user_id)
+            references app_user(app_user_id)
 );
 
 create table weather_forecast (
@@ -50,17 +54,18 @@ delimiter //
 create procedure set_known_good_state()
 begin
 
+    delete from weather_forecast;
+    alter table weather_forecast auto_increment = 1;
+    delete from weather_collection;
+    alter table weather_collection auto_increment = 1;
     delete from app_user_role;
     delete from app_user;
     alter table app_user auto_increment = 1;
     delete from app_role;
     alter table app_role auto_increment = 1;
-    delete from weather_forecast;
-    alter table weather_forecast auto_increment = 1;
-    delete from weather_collection;
-    alter table weather_collection auto_increment = 1;
 
-    --data
+
+    -- data
 
     insert into app_role (`name`) values
     ('USER'),
