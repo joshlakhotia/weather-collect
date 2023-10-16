@@ -20,9 +20,9 @@ a two hour radius of their house in Salt Lake City.
 
 ##### Task 1
 
--   [ ] Come up with database schema for production and tests
--   [ ] SQL for schema
--   [ ] know_good_state for test
+-   [x] Come up with database schema for production and tests
+-   [x] SQL for schema
+-   [x] know_good_state for test
 
 #### Backend
 
@@ -67,3 +67,7 @@ a two hour radius of their house in Salt Lake City.
 ##### Task 11
 
 -   [ ] Weather forecast add, edit, delete
+
+#### Learning Goal
+
+Use a map API to get the latitude and longitude from a user by having them click a point on a map where they want the forecast for.
