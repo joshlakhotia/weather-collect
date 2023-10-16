@@ -82,9 +82,9 @@ begin
     	(1, 2),
     	(2, 1);
 
-    insert into weather_collection (weather_collection_id, `name`, `description`) values
-        (1, 'Utah Base Jumping', 'Forecasts for base jumps around Utah'),
-        (2, 'Utah Speedflying', 'Forecasts for speedfly launches around Utah');
+    insert into weather_collection (weather_collection_id, `name`, `description`, app_user_id) values
+        (1, 'Utah Base Jumping', 'Forecasts for base jumps around Utah', 1),
+        (2, 'Utah Speedflying', 'Forecasts for speedfly launches around Utah', 1);
 
     insert into weather_forecast (weather_forecast_id, `name`, `notes`, latitude, longitude, weather_collection_id) values
         (1, 'Pyramid', 'Near Mt. Timp', 40.223582, -111.589052, 1),
