@@ -28,11 +28,11 @@ a two hour radius of their house in Salt Lake City.
 
 ##### Task 2
 
--   [ ] Backend security for users and admin
+-   [x] Backend security for users and admin
 
 ##### Task 3
 
--   [ ] Tests for security
+-   [x] Tests for security
 
 ##### Task 4
 
