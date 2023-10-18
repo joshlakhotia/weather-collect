@@ -36,11 +36,11 @@ a two hour radius of their house in Salt Lake City.
 
 ##### Task 4
 
--   [ ] Backend for weather collections
+-   [x] Backend for weather collections
 
 ##### Task 5
 
--   [ ] Tests for weather collections
+-   [x] Tests for weather collections
 
 #### Frontend
 
