@@ -9,13 +9,17 @@ public class WeatherCollection {
     private int weatherCollectionId;
     private String name;
     private String description;
+    private int userId;
     private List<WeatherForecast> forecasts = new ArrayList<>();
 
-    public WeatherCollection(int weatherCollectionId, String name, String description, List<WeatherForecast> forecasts) {
+    public WeatherCollection() {
+    }
+
+    public WeatherCollection(int weatherCollectionId, String name, String description, int userId) {
         this.weatherCollectionId = weatherCollectionId;
         this.name = name;
         this.description = description;
-        this.forecasts = forecasts;
+        this.userId = userId;
     }
 
     public int getWeatherCollectionId() {
@@ -42,6 +46,14 @@ public class WeatherCollection {
         this.description = description;
     }
 
+    public int getUserId() {
+        return userId;
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
+    }
+
     public List<WeatherForecast> getForecasts() {
         return forecasts;
     }
@@ -55,11 +67,11 @@ public class WeatherCollection {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         WeatherCollection that = (WeatherCollection) o;
-        return weatherCollectionId == that.weatherCollectionId && Objects.equals(name, that.name) && Objects.equals(description, that.description);
+        return weatherCollectionId == that.weatherCollectionId && userId == that.userId && Objects.equals(name, that.name) && Objects.equals(description, that.description) && Objects.equals(forecasts, that.forecasts);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(weatherCollectionId, name, description);
+        return Objects.hash(weatherCollectionId, name, description, userId, forecasts);
     }
 }
