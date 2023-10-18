@@ -3,7 +3,6 @@ package learn.weather.domain;
 import learn.weather.data.WeatherCollectionRepository;
 import learn.weather.models.WeatherCollection;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mock;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
