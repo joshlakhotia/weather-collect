@@ -7,6 +7,14 @@ import {
 } from "react-router-dom";
 import jwtDecode from "jwt-decode";
 import AuthContext from "./context/AuthContext";
+import Home from "./components/pages/Home";
+import About from "./components/pages/About";
+import Error from "./components/pages/Error";
+import NotFound from "./components/pages/NotFound";
+import Login from "./components/forms/Login";
+import Register from "./components/forms/Register";
+import NavBar from "./components/NavBar";
+import Forecasts from "./components/Forecasts";
 
 const LOCAL_STORAGE_TOKEN_KEY = "weatherToken";
 
@@ -62,7 +70,36 @@ function App() {
     return (
         <AuthContext.Provider value={auth}>
             <Router>
-                <main className="container"></main>
+                <main className="bg-dark min-vh-100">
+                    <NavBar />
+                    <Routes>
+                        <Route path="/" element={<Home />} />
+                        <Route path="/forecasts" element={<Forecasts />} />
+                        <Route path="/about" element={<About />} />
+                        <Route path="/error" element={<Error />} />
+                        <Route
+                            path="/login"
+                            element={
+                                !user ? (
+                                    <Login />
+                                ) : (
+                                    <Navigate to="/" replace={true} />
+                                )
+                            }
+                        />
+                        <Route
+                            path="/register"
+                            element={
+                                !user ? (
+                                    <Register />
+                                ) : (
+                                    <Navigate to="/" replace={true} />
+                                )
+                            }
+                        />
+                        <Route path="*" element={<NotFound />} />
+                    </Routes>
+                </main>
             </Router>
         </AuthContext.Provider>
     );
