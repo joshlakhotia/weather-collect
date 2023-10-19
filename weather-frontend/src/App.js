@@ -31,7 +31,7 @@ function App() {
         setrestoreLoginAttempteComplete(true);
     }, []);
 
-    const login = (token) => {
+    const login = (token, userId) => {
         localStorage.setItem(LOCAL_STORAGE_TOKEN_KEY, token);
 
         const { sub: username, authorities: roles } = jwtDecode(token);
@@ -40,6 +40,7 @@ function App() {
             username,
             roles,
             token,
+            userId,
             hasRole(role) {
                 return this.roles.includes(role);
             },

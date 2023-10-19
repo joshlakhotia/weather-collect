@@ -28,9 +28,10 @@ export default function Login() {
         });
 
         if (response.status === 200) {
-            const { jwt_token } = await response.json();
+            const { jwt_token, userId } = await response.json();
             console.log(jwt_token);
-            auth.login(jwt_token);
+            console.log(userId);
+            auth.login(jwt_token, userId);
             navigate("/");
         } else if (response.status === 403) {
             setErrors(["Login failed."]);
