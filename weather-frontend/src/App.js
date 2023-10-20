@@ -31,10 +31,14 @@ function App() {
         setrestoreLoginAttempteComplete(true);
     }, []);
 
-    const login = (token, userId) => {
+    const login = (token) => {
         localStorage.setItem(LOCAL_STORAGE_TOKEN_KEY, token);
 
-        const { sub: username, authorities: roles } = jwtDecode(token);
+        const {
+            sub: username,
+            authorities: roles,
+            app_user_id: userId,
+        } = jwtDecode(token);
 
         const user = {
             username,
