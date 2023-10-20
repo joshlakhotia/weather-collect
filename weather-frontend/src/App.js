@@ -14,7 +14,7 @@ import NotFound from "./components/pages/NotFound";
 import Login from "./components/forms/Login";
 import Register from "./components/forms/Register";
 import NavBar from "./components/NavBar";
-import Forecasts from "./components/Forecasts";
+import Forecasts from "./components/pages/Forecasts";
 
 const LOCAL_STORAGE_TOKEN_KEY = "weatherToken";
 

@@ -5,7 +5,6 @@ import AuthContext from "../context/AuthContext";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
-import NavDropdown from "react-bootstrap/NavDropdown";
 import { Button } from "react-bootstrap";
 
 function NavBar() {
@@ -34,7 +33,7 @@ function NavBar() {
                         <>
                             <span>Welcome {auth.user.username}!</span>
                             <Button
-                                className="mx-2"
+                                className="mx-4"
                                 variant="dark"
                                 size="sm"
                                 onClick={() => auth.logout()}

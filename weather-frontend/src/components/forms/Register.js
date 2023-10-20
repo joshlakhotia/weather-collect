@@ -1,15 +1,12 @@
-import React, { useState, useContext } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import Error from "../pages/Error";
-import AuthContext from "../../context/AuthContext";
 
 function Register() {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [errors, setErrors] = useState([]);
-
-    const auth = useContext(AuthContext);
 
     const navigate = useNavigate();
 
@@ -30,7 +27,7 @@ function Register() {
         if (response.status === 201) {
             navigate("/login");
         } else if (response.status === 403) {
-            setErrors(["Login failed."]);
+            setErrors(["Registration failed."]);
         } else {
             setErrors(["Unknown error."]);
         }
