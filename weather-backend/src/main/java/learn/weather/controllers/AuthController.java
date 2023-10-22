@@ -47,6 +47,7 @@ public class AuthController {
 
                 HashMap<String, String> map = new HashMap<>();
                 map.put("jwt_token", jwtToken);
+                map.put("userId", String.valueOf(((AppUser) authentication.getPrincipal()).getAppUserId()));
 
                 return new ResponseEntity<>(map, HttpStatus.OK);
             }

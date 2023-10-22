@@ -24,7 +24,7 @@ public class WeatherForecastController {
         return service.findById(forecastId);
     }
 
-    @GetMapping("/collection-forecasts/{collectionId}")
+    @GetMapping("/collection/{collectionId}")
     public List<WeatherForecast> findByCollectionId(@PathVariable int collectionId) {
         return service.findByCollectionId(collectionId);
     }

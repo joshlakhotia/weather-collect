@@ -15,6 +15,7 @@ import Login from "./components/forms/Login";
 import Register from "./components/forms/Register";
 import NavBar from "./components/NavBar";
 import Forecasts from "./components/pages/Forecasts";
+import CollectionForm from "./components/forms/CollectionForm";
 
 const LOCAL_STORAGE_TOKEN_KEY = "weatherToken";
 
@@ -80,6 +81,10 @@ function App() {
                     <Routes>
                         <Route path="/" element={<Home />} />
                         <Route path="/forecasts" element={<Forecasts />} />
+                        <Route
+                            path="/collection-form"
+                            element={<CollectionForm />}
+                        />
                         <Route path="/about" element={<About />} />
                         <Route path="/error" element={<Error />} />
                         <Route

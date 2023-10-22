@@ -46,15 +46,15 @@ a two hour radius of their house in Salt Lake City.
 
 ##### Task 6
 
--   [ ] Basic skeleton
+-   [x] Basic skeleton
 
 ##### Task 7
 
--   [ ] NavBar
+-   [x] NavBar
 
 ##### Task 8
 
--   [ ] User Login and Registration
+-   [x] User Login and Registration
 
 ##### Task 9
 

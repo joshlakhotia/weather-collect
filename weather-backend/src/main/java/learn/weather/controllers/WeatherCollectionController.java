@@ -22,7 +22,7 @@ public class WeatherCollectionController {
     @GetMapping("/{collectionId}")
     public WeatherCollection findById(@PathVariable int collectionId) { return service.findById(collectionId); }
 
-    @GetMapping("/my-collections/{userId}")
+    @GetMapping("/user/{userId}")
     public List<WeatherCollection> findByUserId(@PathVariable int userId) { return service.findByUserId(userId); }
 
     @PostMapping

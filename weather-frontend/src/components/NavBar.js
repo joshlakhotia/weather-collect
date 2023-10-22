@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import AuthContext from "../context/AuthContext";
 
@@ -9,6 +9,8 @@ import { Button } from "react-bootstrap";
 
 function NavBar() {
     const auth = useContext(AuthContext);
+
+    const navigate = useNavigate();
 
     return (
         <Navbar expand="lg" className="bg-info">
@@ -36,7 +38,10 @@ function NavBar() {
                                 className="mx-4"
                                 variant="dark"
                                 size="sm"
-                                onClick={() => auth.logout()}
+                                onClick={() => {
+                                    auth.logout();
+                                    navigate("/");
+                                }}
                             >
                                 Logout
                             </Button>

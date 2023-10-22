@@ -32,7 +32,7 @@ export default function Login() {
             console.log(jwt_token);
             console.log(userId);
             auth.login(jwt_token, userId);
-            navigate("/");
+            navigate("/forecasts");
         } else if (response.status === 403) {
             setErrors(["Login failed."]);
         } else {

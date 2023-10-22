@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
-import { Container, Row } from "react-bootstrap";
+import { Button, Col, Container, Row } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 export default function ForecastList({ collectionId }) {
-    const [forecastList, setForecastList] = useState();
+    const [forecastList, setForecastList] = useState([]);
 
     useEffect(() => {
         const fetchList = async () => {
@@ -19,8 +20,6 @@ export default function ForecastList({ collectionId }) {
             const response = await fetch(url, init);
             if (response.ok) {
                 setForecastList(await response.json());
-            } else {
-                setForecastList([]);
             }
         };
 
@@ -31,7 +30,35 @@ export default function ForecastList({ collectionId }) {
         <>
             <Container fluid>
                 <Row className="text-white">
-                    {forecastList && forecastList[0].name}
+                    {forecastList.length !== 0 ? (
+                        forecastList.map((forecast) => (
+                            <Row className="text-white">{forecast.name}</Row>
+                        ))
+                    ) : (
+                        <p>Wow such quite</p>
+                    )}
+                </Row>
+                <Row>
+                    <Col lg={2}>
+                        <Button
+                            variant="outline-info"
+                            as={Link}
+                            to="/forecast-form"
+                            state={collectionId}
+                        >
+                            Add Forecast To Collection
+                        </Button>
+                    </Col>
+                    <Col lg={2}>
+                        <Button
+                            variant="outline-info"
+                            as={Link}
+                            to="/collection-form"
+                            state={collectionId}
+                        >
+                            Edit This Collection
+                        </Button>
+                    </Col>
                 </Row>
             </Container>
         </>
