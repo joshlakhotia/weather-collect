@@ -2,6 +2,7 @@ import { useEffect, useState, useContext } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { Container, Row, Col, Button, Modal } from "react-bootstrap";
 import AuthContext from "../../context/AuthContext";
+import GoogleMapReact from "google-map-react";
 
 export default function ForecastForm() {
     const auth = useContext(AuthContext);
@@ -14,8 +15,8 @@ export default function ForecastForm() {
     const [forecast, setForecast] = useState({
         name: "",
         notes: "",
-        latitude: null,
-        longitude: null,
+        latitude: "",
+        longitude: "",
         weatherCollectionId: collectionId,
     });
     const [errors, setErrors] = useState([]);
@@ -120,6 +121,16 @@ export default function ForecastForm() {
             });
     }
 
+    function handleClick(evt) {
+        setForecast((previous) => {
+            const next = { ...previous };
+            next.latitude = evt.lat.toFixed(6);
+            next.longitude = evt.lng.toFixed(6);
+            console.log(next);
+            return next;
+        });
+    }
+
     return (
         <Container className="text-white">
             <Row>
@@ -176,7 +187,7 @@ export default function ForecastForm() {
                             <input
                                 id="latitude"
                                 name="latitude"
-                                type="number"
+                                type="text"
                                 className="form-control"
                                 required
                                 min="-90"
@@ -192,7 +203,7 @@ export default function ForecastForm() {
                             <input
                                 id="longitude"
                                 name="longitude"
-                                type="number"
+                                type="text"
                                 className="form-control"
                                 required
                                 min="-180"
@@ -232,6 +243,18 @@ export default function ForecastForm() {
                         )}
                     </div>
                 </form>
+            </Row>
+            <Row className="min-vh-100">
+                <Col lg={10}>
+                    <GoogleMapReact
+                        bootstrapURLKeys={{
+                            key: "AIzaSyA8xewRO9kZK1rNabC1eZ0IwgGlliEwNbo",
+                        }}
+                        defaultCenter={{ lat: 40, lng: -111 }}
+                        defaultZoom={6}
+                        onClick={handleClick}
+                    ></GoogleMapReact>
+                </Col>
             </Row>
             <Modal className="" show={showModal} onHide={handleClose}>
                 <Modal.Header closeButton>
