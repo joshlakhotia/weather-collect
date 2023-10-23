@@ -44,7 +44,10 @@ export default function ForecastList({ collectionId }) {
                             variant="outline-info"
                             as={Link}
                             to="/forecast-form"
-                            state={collectionId}
+                            state={{
+                                collectionId: collectionId,
+                                forecastId: 0,
+                            }}
                         >
                             Add Forecast To Collection
                         </Button>

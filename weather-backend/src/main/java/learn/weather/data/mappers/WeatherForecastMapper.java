@@ -17,7 +17,7 @@ public class WeatherForecastMapper implements RowMapper<WeatherForecast> {
             forecast.setNotes(rs.getString("notes"));
         };
         forecast.setLatitude(rs.getDouble("latitude"));
-        forecast.setLatitude(rs.getDouble("longitude"));
+        forecast.setLongitude(rs.getDouble("longitude"));
         forecast.setWeatherCollectionId(rs.getInt("weather_collection_id"));
 
         return forecast;

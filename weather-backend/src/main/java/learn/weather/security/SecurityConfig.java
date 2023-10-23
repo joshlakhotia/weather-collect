@@ -37,6 +37,7 @@ public class SecurityConfig {
                 .antMatchers("/create_account").permitAll()
                 .antMatchers("/api/forecast/collection/*").permitAll()
                 .antMatchers("/api/forecast/*").permitAll()
+                .antMatchers("/api/forecast").permitAll()
                 .antMatchers("/api/collection/user/*").permitAll()
                 .antMatchers("/api/collection/*").permitAll()
                 .antMatchers("/api/collection").permitAll()

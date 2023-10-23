@@ -53,7 +53,7 @@ public class WeatherForecastJdbcTemplateRepository implements WeatherForecastRep
             ps.setString(1, weatherForecast.getName());
             ps.setString(2, weatherForecast.getNotes() == null ? null : weatherForecast.getNotes());
             ps.setDouble(3, weatherForecast.getLatitude());
-            ps.setDouble(4, weatherForecast.getLatitude());
+            ps.setDouble(4, weatherForecast.getLongitude());
             ps.setInt(5, weatherForecast.getWeatherCollectionId());
             return ps;
         }, keyHolder);

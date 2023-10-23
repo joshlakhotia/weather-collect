@@ -40,7 +40,10 @@ public class WeatherForecastController {
 
     @PutMapping("/{forecastId}")
     public ResponseEntity<Object> update(@PathVariable int forecastId, @RequestBody WeatherForecast forecast) {
+        System.out.println("trying to match");
         if (forecastId != forecast.getWeatherForecastId()) {
+            System.out.println(forecastId);
+            System.out.println(forecast.getWeatherForecastId());
             return new ResponseEntity<>(HttpStatus.CONFLICT);
         }
 

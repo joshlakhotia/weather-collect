@@ -3,31 +3,32 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { Container, Row, Col, Button, Modal } from "react-bootstrap";
 import AuthContext from "../../context/AuthContext";
 
-export default function CollectionForm() {
+export default function ForecastForm() {
     const auth = useContext(AuthContext);
+    const location = useLocation();
+    const { collectionId, forecastId } = location.state;
+    console.log(collectionId);
+    console.log(forecastId);
 
     const [showModal, setShowModal] = useState(false);
-
-    const [collection, setCollection] = useState({
+    const [forecast, setForecast] = useState({
         name: "",
-        description: "",
-        userId: auth.user.userId,
+        notes: "",
+        latitude: null,
+        longitude: null,
+        weatherCollectionId: collectionId,
     });
     const [errors, setErrors] = useState([]);
     const navigate = useNavigate();
 
-    const location = useLocation();
-    const collectionId = location.state ? location.state : 0;
-    console.log(collectionId);
-
     useEffect(() => {
-        if (collectionId > 0) {
-            fetch(`http://localhost:8080/api/collection/${collectionId}`)
+        if (forecastId > 0) {
+            fetch(`http://localhost:8080/api/forecast/${forecastId}`)
                 .then((res) => res.json())
-                .then(setCollection)
+                .then(setForecast)
                 .catch(console.error);
         }
-    }, [collectionId]);
+    }, [forecastId]);
 
     function handleClose() {
         setShowModal(false);
@@ -38,7 +39,7 @@ export default function CollectionForm() {
     }
 
     function handleChange(evt) {
-        setCollection((previous) => {
+        setForecast((previous) => {
             const next = { ...previous };
             next[evt.target.name] = evt.target.value;
             console.log(next);
@@ -52,11 +53,11 @@ export default function CollectionForm() {
         let url;
         let method;
 
-        if (collectionId > 0) {
-            url = `http://localhost:8080/api/collection/${collectionId}`;
+        if (forecastId > 0) {
+            url = `http://localhost:8080/api/forecast/${forecastId}`;
             method = "PUT";
         } else {
-            url = `http://localhost:8080/api/collection`;
+            url = `http://localhost:8080/api/forecast`;
             method = "POST";
         }
 
@@ -65,7 +66,7 @@ export default function CollectionForm() {
             headers: {
                 "Content-Type": "application/json",
             },
-            body: JSON.stringify(collection),
+            body: JSON.stringify(forecast),
         };
 
         fetch(url, config)
@@ -97,7 +98,7 @@ export default function CollectionForm() {
             method: "DELETE",
         };
 
-        fetch(`http://localhost:8080/api/collection/${collectionId}`, config)
+        fetch(`http://localhost:8080/api/forecast/${forecastId}`, config)
             .then((response) => {
                 if (response.ok) {
                     navigate("/forecasts");
@@ -122,9 +123,7 @@ export default function CollectionForm() {
     return (
         <Container className="text-white">
             <Row>
-                <h1>
-                    {collectionId > 0 ? `Edit Collection` : "Add Collection"}
-                </h1>
+                <h1>{forecastId > 0 ? "Edit Forecast" : "Add Forecast"}</h1>
                 {errors && errors.length > 0 && (
                     <div className="alert alert-danger">
                         <ul className="mb-0">
@@ -149,23 +148,57 @@ export default function CollectionForm() {
                                 className="form-control"
                                 required
                                 onChange={handleChange}
-                                value={collection.name}
+                                value={forecast.name}
                             />
                         </div>
                     </div>
                     <div className="row mb-3">
                         <div className="col-5">
-                            <label className="form-label" htmlFor="description">
-                                Description
+                            <label className="form-label" htmlFor="notes">
+                                Notes
                             </label>
                             <textarea
-                                id="description"
-                                name="description"
+                                id="notes"
+                                name="notes"
                                 type="textarea"
                                 className="form-control"
                                 onChange={handleChange}
-                                value={collection.description}
+                                value={forecast.description}
                                 rows={3}
+                            />
+                        </div>
+                    </div>
+                    <div className="row mb-3">
+                        <div className="col-2 mb-3">
+                            <label className="form-label" htmlFor="latitude">
+                                Latitude
+                            </label>
+                            <input
+                                id="latitude"
+                                name="latitude"
+                                type="number"
+                                className="form-control"
+                                required
+                                min="-90"
+                                max="90"
+                                onChange={handleChange}
+                                value={forecast.latitude}
+                            />
+                        </div>
+                        <div className="col-2 mb-3">
+                            <label className="form-label" htmlFor="longitude">
+                                Longitude
+                            </label>
+                            <input
+                                id="longitude"
+                                name="longitude"
+                                type="number"
+                                className="form-control"
+                                required
+                                min="-180"
+                                max="180"
+                                onChange={handleChange}
+                                value={forecast.longitude}
                             />
                         </div>
                     </div>
@@ -187,7 +220,7 @@ export default function CollectionForm() {
                                 Cancel
                             </Button>
                         </Col>
-                        {collectionId > 0 && (
+                        {forecastId > 0 && (
                             <Col lg={2}>
                                 <Button
                                     variant="outline-danger"
@@ -202,11 +235,10 @@ export default function CollectionForm() {
             </Row>
             <Modal className="" show={showModal} onHide={handleClose}>
                 <Modal.Header closeButton>
-                    <Modal.Title>Delete {collection.name}?</Modal.Title>
+                    <Modal.Title>Delete {forecast.name}?</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    This will delete the collection and all associated
-                    forecasts. Are you sure?
+                    This will permanently delete this forecast. Are you sure?
                 </Modal.Body>
                 <Modal.Footer>
                     <Button variant="secondary" onClick={handleClose}>
