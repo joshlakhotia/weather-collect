@@ -23,7 +23,7 @@ export default function ForecastCard({ forecast }) {
         };
 
         fetchForecast();
-    }, []);
+    }, [forecast]);
 
     return (
         <>
@@ -41,7 +41,7 @@ export default function ForecastCard({ forecast }) {
                             </Card.Subtitle>
                             <Row className="text-center">
                                 <Col className="">
-                                    <p className="mb-1">
+                                    <p className="mb-0">
                                         <Unicons.UilClockTwo
                                             size="14"
                                             color="#61DAFB"
@@ -49,8 +49,47 @@ export default function ForecastCard({ forecast }) {
                                         {unixToTime(forecastData.list[0].dt)}
                                     </p>
                                     <Image
+                                        className="mb-0"
                                         src={`https://openweathermap.org/img/wn/${forecastData.list[0].weather[0].icon}.png`}
                                     />
+                                    <p className="mb-0">
+                                        {forecastData.list[0].weather[0].description.replace(
+                                            /\b\w/g,
+                                            (char) => char.toUpperCase()
+                                        )}
+                                    </p>
+                                </Col>
+                                <Col className="text-left mt-2">
+                                    <p className="mb-2">
+                                        Wind
+                                        <Unicons.UilWind
+                                            size="14"
+                                            color="#61DAFB"
+                                        />{" "}
+                                        {Math.round(
+                                            forecastData.list[0].wind.speed
+                                        )}
+                                    </p>
+                                    <p className="mb-2">
+                                        Gust
+                                        <Unicons.UilWind
+                                            size="14"
+                                            color="#61DAFB"
+                                        />{" "}
+                                        {Math.round(
+                                            forecastData.list[0].wind.gust
+                                        )}
+                                    </p>
+                                    <p className="mb-0">
+                                        Direction
+                                        <Unicons.UilCompass
+                                            size="14"
+                                            color="#61DAFB"
+                                        />{" "}
+                                        {Math.round(
+                                            forecastData.list[0].wind.deg
+                                        )}
+                                    </p>
                                 </Col>
                                 <Col>
                                     <p className="mb-1">
@@ -63,6 +102,44 @@ export default function ForecastCard({ forecast }) {
                                     <Image
                                         src={`https://openweathermap.org/img/wn/${forecastData.list[1].weather[0].icon}.png`}
                                     />
+                                    <p className="mb-0">
+                                        {forecastData.list[1].weather[0].description.replace(
+                                            /\b\w/g,
+                                            (char) => char.toUpperCase()
+                                        )}
+                                    </p>
+                                </Col>
+                                <Col className="text-left mt-2">
+                                    <p className="mb-2">
+                                        Wind
+                                        <Unicons.UilWind
+                                            size="14"
+                                            color="#61DAFB"
+                                        />{" "}
+                                        {Math.round(
+                                            forecastData.list[1].wind.speed
+                                        )}
+                                    </p>
+                                    <p className="mb-2">
+                                        Gust
+                                        <Unicons.UilWind
+                                            size="14"
+                                            color="#61DAFB"
+                                        />{" "}
+                                        {Math.round(
+                                            forecastData.list[1].wind.gust
+                                        )}
+                                    </p>
+                                    <p className="mb-0">
+                                        Direction
+                                        <Unicons.UilCompass
+                                            size="14"
+                                            color="#61DAFB"
+                                        />{" "}
+                                        {Math.round(
+                                            forecastData.list[1].wind.deg
+                                        )}
+                                    </p>
                                 </Col>
                                 <Col>
                                     <p className="mb-1">
@@ -75,6 +152,44 @@ export default function ForecastCard({ forecast }) {
                                     <Image
                                         src={`https://openweathermap.org/img/wn/${forecastData.list[2].weather[0].icon}.png`}
                                     />
+                                    <p className="mb-0">
+                                        {forecastData.list[2].weather[0].description.replace(
+                                            /\b\w/g,
+                                            (char) => char.toUpperCase()
+                                        )}
+                                    </p>
+                                </Col>
+                                <Col className="text-left mt-2">
+                                    <p className="mb-2">
+                                        Wind
+                                        <Unicons.UilWind
+                                            size="14"
+                                            color="#61DAFB"
+                                        />{" "}
+                                        {Math.round(
+                                            forecastData.list[2].wind.speed
+                                        )}
+                                    </p>
+                                    <p className="mb-2">
+                                        Gust
+                                        <Unicons.UilWind
+                                            size="14"
+                                            color="#61DAFB"
+                                        />{" "}
+                                        {Math.round(
+                                            forecastData.list[2].wind.gust
+                                        )}
+                                    </p>
+                                    <p className="mb-0">
+                                        Direction
+                                        <Unicons.UilCompass
+                                            size="14"
+                                            color="#61DAFB"
+                                        />{" "}
+                                        {Math.round(
+                                            forecastData.list[2].wind.deg
+                                        )}
+                                    </p>
                                 </Col>
                                 <Col>
                                     <p className="mb-1">
@@ -87,54 +202,44 @@ export default function ForecastCard({ forecast }) {
                                     <Image
                                         src={`https://openweathermap.org/img/wn/${forecastData.list[3].weather[0].icon}.png`}
                                     />
+                                    <p className="mb-0">
+                                        {forecastData.list[3].weather[0].description.replace(
+                                            /\b\w/g,
+                                            (char) => char.toUpperCase()
+                                        )}
+                                    </p>
                                 </Col>
-                                <Col>
-                                    <p className="mb-1">
-                                        <Unicons.UilClockSeven
+                                <Col className="text-left mt-2">
+                                    <p className="mb-2">
+                                        Wind
+                                        <Unicons.UilWind
                                             size="14"
                                             color="#61DAFB"
                                         />{" "}
-                                        {unixToTime(forecastData.list[4].dt)}
+                                        {Math.round(
+                                            forecastData.list[3].wind.speed
+                                        )}
                                     </p>
-                                    <Image
-                                        src={`https://openweathermap.org/img/wn/${forecastData.list[4].weather[0].icon}.png`}
-                                    />
-                                </Col>
-                                <Col>
-                                    <p className="mb-1">
-                                        <Unicons.UilClockNine
+                                    <p className="mb-2">
+                                        Gust
+                                        <Unicons.UilWind
                                             size="14"
                                             color="#61DAFB"
                                         />{" "}
-                                        {unixToTime(forecastData.list[5].dt)}
+                                        {Math.round(
+                                            forecastData.list[3].wind.gust
+                                        )}
                                     </p>
-                                    <Image
-                                        src={`https://openweathermap.org/img/wn/${forecastData.list[5].weather[0].icon}.png`}
-                                    />
-                                </Col>
-                                <Col>
-                                    <p className="mb-1">
-                                        <Unicons.UilClockTen
+                                    <p className="mb-0">
+                                        Direction
+                                        <Unicons.UilCompass
                                             size="14"
                                             color="#61DAFB"
                                         />{" "}
-                                        {unixToTime(forecastData.list[6].dt)}
+                                        {Math.round(
+                                            forecastData.list[3].wind.deg
+                                        )}
                                     </p>
-                                    <Image
-                                        src={`https://openweathermap.org/img/wn/${forecastData.list[6].weather[0].icon}.png`}
-                                    />
-                                </Col>
-                                <Col>
-                                    <p className="mb-1">
-                                        <Unicons.UilClock
-                                            size="14"
-                                            color="#61DAFB"
-                                        />{" "}
-                                        {unixToTime(forecastData.list[7].dt)}
-                                    </p>
-                                    <Image
-                                        src={`https://openweathermap.org/img/wn/${forecastData.list[7].weather[0].icon}.png`}
-                                    />
                                 </Col>
                             </Row>
                         </Card.Body>
