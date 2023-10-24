@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Button, Col, Container, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import ForecastCard from "./ForecastCard";
 
 export default function ForecastList({ collectionId }) {
     const [forecastList, setForecastList] = useState([]);
@@ -32,7 +33,9 @@ export default function ForecastList({ collectionId }) {
                 <Row className="text-white">
                     {forecastList.length !== 0 ? (
                         forecastList.map((forecast) => (
-                            <Row className="text-white">{forecast.name}</Row>
+                            <Row className="text-white mb-3">
+                                <ForecastCard forecast={forecast} />
+                            </Row>
                         ))
                     ) : (
                         <p>Wow such quite</p>

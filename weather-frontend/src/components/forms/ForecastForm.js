@@ -146,106 +146,113 @@ export default function ForecastForm() {
                 )}
             </Row>
             <Row>
-                <form onSubmit={handleSubmit}>
-                    <div className="row mb-3">
-                        <div className="col-5">
-                            <label className="form-label" htmlFor="name">
-                                Name
-                            </label>
-                            <input
-                                id="name"
-                                name="name"
-                                type="text"
-                                className="form-control"
-                                required
-                                onChange={handleChange}
-                                value={forecast.name}
-                            />
+                <Col lg={5}>
+                    <form onSubmit={handleSubmit}>
+                        <div className="row mb-3">
+                            <div className="col-10">
+                                <label className="form-label" htmlFor="name">
+                                    Name
+                                </label>
+                                <input
+                                    id="name"
+                                    name="name"
+                                    type="text"
+                                    className="form-control"
+                                    required
+                                    onChange={handleChange}
+                                    value={forecast.name}
+                                />
+                            </div>
                         </div>
-                    </div>
-                    <div className="row mb-3">
-                        <div className="col-5">
-                            <label className="form-label" htmlFor="notes">
-                                Notes
-                            </label>
-                            <textarea
-                                id="notes"
-                                name="notes"
-                                type="textarea"
-                                className="form-control"
-                                onChange={handleChange}
-                                value={forecast.description}
-                                rows={3}
-                            />
+                        <div className="row mb-3">
+                            <div className="col-10">
+                                <label className="form-label" htmlFor="notes">
+                                    Notes
+                                </label>
+                                <textarea
+                                    id="notes"
+                                    name="notes"
+                                    type="textarea"
+                                    className="form-control"
+                                    onChange={handleChange}
+                                    value={forecast.description}
+                                    rows={3}
+                                />
+                            </div>
                         </div>
-                    </div>
-                    <div className="row mb-3">
-                        <div className="col-2 mb-3">
-                            <label className="form-label" htmlFor="latitude">
-                                Latitude
-                            </label>
-                            <input
-                                id="latitude"
-                                name="latitude"
-                                type="text"
-                                className="form-control"
-                                required
-                                min="-90"
-                                max="90"
-                                onChange={handleChange}
-                                value={forecast.latitude}
-                            />
+                        <div className="row mb-3">
+                            <div className="col-4 mb-3">
+                                <label
+                                    className="form-label"
+                                    htmlFor="latitude"
+                                >
+                                    Latitude
+                                </label>
+                                <input
+                                    id="latitude"
+                                    name="latitude"
+                                    type="text"
+                                    className="form-control"
+                                    required
+                                    min="-90"
+                                    max="90"
+                                    onChange={handleChange}
+                                    value={forecast.latitude}
+                                />
+                            </div>
+                            <div className="col-4 mb-3">
+                                <label
+                                    className="form-label"
+                                    htmlFor="longitude"
+                                >
+                                    Longitude
+                                </label>
+                                <input
+                                    id="longitude"
+                                    name="longitude"
+                                    type="text"
+                                    className="form-control"
+                                    required
+                                    min="-180"
+                                    max="180"
+                                    onChange={handleChange}
+                                    value={forecast.longitude}
+                                />
+                            </div>
                         </div>
-                        <div className="col-2 mb-3">
-                            <label className="form-label" htmlFor="longitude">
-                                Longitude
-                            </label>
-                            <input
-                                id="longitude"
-                                name="longitude"
-                                type="text"
-                                className="form-control"
-                                required
-                                min="-180"
-                                max="180"
-                                onChange={handleChange}
-                                value={forecast.longitude}
-                            />
-                        </div>
-                    </div>
-                    <div className="row mb-3">
-                        <Col lg={1}>
-                            <Button
-                                variant="outline-info"
-                                type="submit"
-                                onSubmit={handleSubmit}
-                            >
-                                Submit
-                            </Button>
-                        </Col>
-                        <Col lg={1}>
-                            <Button
-                                variant="outline-info"
-                                onClick={() => navigate("/forecasts")}
-                            >
-                                Cancel
-                            </Button>
-                        </Col>
-                        {forecastId > 0 && (
+                        <div className="row mb-3">
                             <Col lg={2}>
                                 <Button
-                                    variant="outline-danger"
-                                    onClick={handleOpen}
+                                    variant="outline-info"
+                                    type="submit"
+                                    onSubmit={handleSubmit}
                                 >
-                                    Delete Collection
+                                    Submit
                                 </Button>
                             </Col>
-                        )}
-                    </div>
-                </form>
-            </Row>
-            <Row className="min-vh-100">
-                <Col lg={10}>
+                            <Col lg={2}>
+                                <Button
+                                    variant="outline-info"
+                                    onClick={() => navigate("/forecasts")}
+                                >
+                                    Cancel
+                                </Button>
+                            </Col>
+                            {forecastId > 0 && (
+                                <Col lg={3}>
+                                    <Button
+                                        variant="outline-danger"
+                                        onClick={handleOpen}
+                                    >
+                                        Delete Collection
+                                    </Button>
+                                </Col>
+                            )}
+                        </div>
+                    </form>
+                </Col>
+                <Col lg={5}>
+                    <h6>Click location to autofill lat/lng</h6>
                     <GoogleMapReact
                         bootstrapURLKeys={{
                             key: "AIzaSyA8xewRO9kZK1rNabC1eZ0IwgGlliEwNbo",
@@ -255,6 +262,9 @@ export default function ForecastForm() {
                         onClick={handleClick}
                     ></GoogleMapReact>
                 </Col>
+            </Row>
+            <Row className="min-vh-100">
+                <Col lg={10}></Col>
             </Row>
             <Modal className="" show={showModal} onHide={handleClose}>
                 <Modal.Header closeButton>

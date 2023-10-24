@@ -71,7 +71,7 @@ export default function Collections() {
                     </Button>
                 </Col>
                 <Col className="m-3">
-                    <h1 className="text-white">Forecasts</h1>
+                    <h1 className="text-white mb-4">Forecasts</h1>
                     {collectionId ? (
                         <ForecastList collectionId={collectionId} />
                     ) : (

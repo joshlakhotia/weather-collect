@@ -17,6 +17,7 @@ import NavBar from "./components/NavBar";
 import Forecasts from "./components/pages/Forecasts";
 import CollectionForm from "./components/forms/CollectionForm";
 import ForecastForm from "./components/forms/ForecastForm";
+import Forecast from "./components/pages/Forecast";
 
 const LOCAL_STORAGE_TOKEN_KEY = "weatherToken";
 
@@ -90,6 +91,7 @@ function App() {
                             path="/forecast-form"
                             element={<ForecastForm />}
                         />
+                        <Route path="/forecast" element={<Forecast />} />
                         <Route path="/about" element={<About />} />
                         <Route path="/error" element={<Error />} />
                         <Route
