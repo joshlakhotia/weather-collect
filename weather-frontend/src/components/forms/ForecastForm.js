@@ -175,7 +175,7 @@ export default function ForecastForm() {
                                     type="textarea"
                                     className="form-control"
                                     onChange={handleChange}
-                                    value={forecast.description}
+                                    value={forecast.notes}
                                     rows={3}
                                 />
                             </div>
@@ -239,7 +239,7 @@ export default function ForecastForm() {
                                 </Button>
                             </Col>
                             {forecastId > 0 && (
-                                <Col lg={3}>
+                                <Col lg={4}>
                                     <Button
                                         variant="outline-danger"
                                         onClick={handleOpen}
@@ -258,7 +258,7 @@ export default function ForecastForm() {
                             key: "AIzaSyA8xewRO9kZK1rNabC1eZ0IwgGlliEwNbo",
                         }}
                         defaultCenter={{ lat: 40, lng: -111 }}
-                        defaultZoom={6}
+                        defaultZoom={5}
                         onClick={handleClick}
                     ></GoogleMapReact>
                 </Col>
