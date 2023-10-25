@@ -6,6 +6,7 @@ import Error from "../pages/Error";
 function Register() {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
+    const [comfirm, setComfirm] = useState("");
     const [errors, setErrors] = useState([]);
 
     const navigate = useNavigate();
@@ -13,28 +14,35 @@ function Register() {
     const handleSubmit = async (event) => {
         event.preventDefault();
 
-        const response = await fetch("http://localhost:8080/create_account", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-                username,
-                password,
-            }),
-        });
+        if (password === comfirm) {
+            const response = await fetch(
+                "http://localhost:8080/create_account",
+                {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({
+                        username,
+                        password,
+                    }),
+                }
+            );
 
-        if (response.status === 201) {
-            navigate("/login");
-        } else if (response.status === 403) {
-            setErrors(await response.json());
+            if (response.status === 201) {
+                navigate("/login");
+            } else if (response.status === 403) {
+                setErrors(await response.json());
+            } else {
+                setErrors(await response.json());
+            }
         } else {
-            setErrors(await response.json());
+            setErrors(["Passwords do not match"]);
         }
     };
 
     return (
-        <div className="container my-5">
+        <div className="container my-5 text-white">
             <h2 className="text-white">Register</h2>
             {errors && errors.length > 0 && (
                 <div className="alert alert-danger">
@@ -68,6 +76,18 @@ function Register() {
                         placeholder="Password"
                         onChange={(event) => setPassword(event.target.value)}
                         id="password"
+                    />
+                </div>
+                <div className="col-md-3 my-3">
+                    <label htmlFor="comfirm" className="mb-2">
+                        Comfirm Password:
+                    </label>
+                    <input
+                        type="password"
+                        className="form-control"
+                        placeholder="Comfirm"
+                        onChange={(event) => setComfirm(event.target.value)}
+                        id="comfirm"
                     />
                 </div>
                 <div>
