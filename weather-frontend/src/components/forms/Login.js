@@ -35,17 +35,25 @@ export default function Login() {
             navigate("/forecasts");
         } else if (response.status === 403) {
             setErrors(["Login failed."]);
+            console.log("login failed");
         } else {
             setErrors(["Unknown error."]);
+            console.log("unknown error");
         }
     };
 
     return (
         <div className="container my-5">
             <h2 className="text-white">Login</h2>
-            {errors.map((error, i) => (
-                <Error key={i} msg={error} />
-            ))}
+            {errors && errors.length > 0 && (
+                <div className="alert alert-danger">
+                    <ul className="mb-0">
+                        {errors.map((err) => (
+                            <li key={err}>{err}</li>
+                        ))}
+                    </ul>
+                </div>
+            )}
             <form onSubmit={handleSubmit}>
                 <div className="col-md-3 my-3">
                     <label htmlFor="username" className="mb-2">
