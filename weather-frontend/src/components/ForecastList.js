@@ -29,8 +29,8 @@ export default function ForecastList({ collectionId }) {
 
     return (
         <>
-            <Container fluid>
-                <Row className="text-white">
+            <Container fluid className="text-white">
+                <Row>
                     {forecastList.length !== 0 ? (
                         forecastList.map((forecast) => (
                             <Row className="text-white mb-3">

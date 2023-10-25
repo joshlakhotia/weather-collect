@@ -263,9 +263,6 @@ export default function ForecastForm() {
                     ></GoogleMapReact>
                 </Col>
             </Row>
-            <Row className="min-vh-100">
-                <Col lg={10}></Col>
-            </Row>
             <Modal className="" show={showModal} onHide={handleClose}>
                 <Modal.Header closeButton>
                     <Modal.Title>Delete {forecast.name}?</Modal.Title>
