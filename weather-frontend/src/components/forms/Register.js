@@ -1,12 +1,10 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-import Error from "../pages/Error";
-
 function Register() {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
-    const [comfirm, setComfirm] = useState("");
+    const [confirm, setConfirm] = useState("");
     const [errors, setErrors] = useState([]);
 
     const navigate = useNavigate();
@@ -14,7 +12,7 @@ function Register() {
     const handleSubmit = async (event) => {
         event.preventDefault();
 
-        if (password === comfirm) {
+        if (password === confirm) {
             const response = await fetch(
                 "http://localhost:8080/create_account",
                 {
@@ -42,7 +40,7 @@ function Register() {
     };
 
     return (
-        <div className="container my-5 text-white">
+        <div className="container mt-5 text-white">
             <h2 className="text-white">Register</h2>
             {errors && errors.length > 0 && (
                 <div className="alert alert-danger">
@@ -79,15 +77,15 @@ function Register() {
                     />
                 </div>
                 <div className="col-md-3 my-3">
-                    <label htmlFor="comfirm" className="mb-2">
-                        Comfirm Password:
+                    <label htmlFor="confirm" className="mb-2">
+                        Confirm Password:
                     </label>
                     <input
                         type="password"
                         className="form-control"
-                        placeholder="Comfirm"
-                        onChange={(event) => setComfirm(event.target.value)}
-                        id="comfirm"
+                        placeholder="Confirm"
+                        onChange={(event) => setConfirm(event.target.value)}
+                        id="confirm"
                     />
                 </div>
                 <div>

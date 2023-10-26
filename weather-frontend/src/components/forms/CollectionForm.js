@@ -5,9 +5,7 @@ import AuthContext from "../../context/AuthContext";
 
 export default function CollectionForm() {
     const auth = useContext(AuthContext);
-
     const [showModal, setShowModal] = useState(false);
-
     const [collection, setCollection] = useState({
         name: "",
         description: "",
@@ -15,14 +13,18 @@ export default function CollectionForm() {
     });
     const [errors, setErrors] = useState([]);
     const navigate = useNavigate();
-
     const location = useLocation();
     const collectionId = location.state ? location.state : 0;
-    console.log(collectionId);
 
     useEffect(() => {
+        const url = `http://localhost:8080/api/collection/${collectionId}`;
+        const init = {
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem("weatherToken")}`,
+            },
+        };
         if (collectionId > 0) {
-            fetch(`http://localhost:8080/api/collection/${collectionId}`)
+            fetch(url, init)
                 .then((res) => res.json())
                 .then(setCollection)
                 .catch(console.error);
@@ -60,15 +62,16 @@ export default function CollectionForm() {
             method = "POST";
         }
 
-        const config = {
+        const init = {
             method: method,
             headers: {
                 "Content-Type": "application/json",
+                Authorization: `Bearer ${localStorage.getItem("weatherToken")}`,
             },
             body: JSON.stringify(collection),
         };
 
-        fetch(url, config)
+        fetch(url, init)
             .then((response) => {
                 if (response.ok) {
                     navigate("/forecasts");
@@ -93,11 +96,15 @@ export default function CollectionForm() {
     function handleDelete(evt) {
         evt.preventDefault();
 
-        const config = {
+        const init = {
             method: "DELETE",
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${localStorage.getItem("weatherToken")}`,
+            },
         };
 
-        fetch(`http://localhost:8080/api/collection/${collectionId}`, config)
+        fetch(`http://localhost:8080/api/collection/${collectionId}`, init)
             .then((response) => {
                 if (response.ok) {
                     navigate("/forecasts");

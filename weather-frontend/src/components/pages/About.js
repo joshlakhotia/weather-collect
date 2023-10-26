@@ -10,20 +10,22 @@ function About() {
                 <Row className="mb-4">
                     <Col lg={7}>
                         <h3 className="border-bottom border-info">
-                            The mission to see multiple forecasts more simple
+                            Making the mission to see multiple forecasts easier
                         </h3>
                         <p>
                             A weather project born out of the frustration of
                             having to have several tabs open to view forecasts
                             to make a decision for an outdoor activity that day.
-                            Now, all the forecasts I want are on one page.
+                            Now, all the forecasts you could want are on one
+                            page, completely customizable by you.
                         </p>
                         <p>
-                            You don't want to see the forecasts I want to see?
-                            WHAT? No worries. I've created this website to let
-                            you customize your own forecasts into "collections",
-                            or activities, to make the choice for what you do
-                            that day even easier.
+                            Make custom collections of certain activities or
+                            places. Then add the forecasts for locations that
+                            you want to those collections too see which area has
+                            the best weather for your requirements. Saves you
+                            effort in the preparation stage, so you have more
+                            time in the having fun stage.
                         </p>
                     </Col>
                     <Col className="bg-secondary mx-3 rounded">

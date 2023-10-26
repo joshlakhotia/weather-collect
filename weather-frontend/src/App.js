@@ -9,7 +9,6 @@ import jwtDecode from "jwt-decode";
 import AuthContext from "./context/AuthContext";
 import Home from "./components/pages/Home";
 import About from "./components/pages/About";
-import Error from "./components/pages/Error";
 import NotFound from "./components/pages/NotFound";
 import Login from "./components/forms/Login";
 import Register from "./components/forms/Register";
@@ -82,18 +81,47 @@ function App() {
                     <NavBar />
                     <Routes>
                         <Route path="/" element={<Home />} />
-                        <Route path="/forecasts" element={<Forecasts />} />
+                        <Route
+                            path="/forecasts"
+                            element={
+                                user ? (
+                                    <Forecasts />
+                                ) : (
+                                    <Navigate to="/login" replace={true} />
+                                )
+                            }
+                        />
                         <Route
                             path="/collection-form"
-                            element={<CollectionForm />}
+                            element={
+                                user ? (
+                                    <CollectionForm />
+                                ) : (
+                                    <Navigate to="/login" replace={true} />
+                                )
+                            }
                         />
                         <Route
                             path="/forecast-form"
-                            element={<ForecastForm />}
+                            element={
+                                user ? (
+                                    <ForecastForm />
+                                ) : (
+                                    <Navigate to="/login" replace={true} />
+                                )
+                            }
                         />
-                        <Route path="/forecast" element={<Forecast />} />
+                        <Route
+                            path="/forecast"
+                            element={
+                                user ? (
+                                    <Forecast />
+                                ) : (
+                                    <Navigate to="/login" replace={true} />
+                                )
+                            }
+                        />
                         <Route path="/about" element={<About />} />
-                        <Route path="/error" element={<Error />} />
                         <Route
                             path="/login"
                             element={

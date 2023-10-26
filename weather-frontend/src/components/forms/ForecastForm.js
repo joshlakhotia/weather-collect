@@ -5,7 +5,6 @@ import AuthContext from "../../context/AuthContext";
 import GoogleMapReact from "google-map-react";
 
 export default function ForecastForm() {
-    const auth = useContext(AuthContext);
     const location = useLocation();
     const { collectionId, forecastId } = location.state;
     console.log(collectionId);
@@ -23,8 +22,14 @@ export default function ForecastForm() {
     const navigate = useNavigate();
 
     useEffect(() => {
+        const url = `http://localhost:8080/api/forecast/${forecastId}`;
+        const init = {
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem("weatherToken")}`,
+            },
+        };
         if (forecastId > 0) {
-            fetch(`http://localhost:8080/api/forecast/${forecastId}`)
+            fetch(url, init)
                 .then((res) => res.json())
                 .then(setForecast)
                 .catch(console.error);
@@ -62,15 +67,16 @@ export default function ForecastForm() {
             method = "POST";
         }
 
-        const config = {
+        const init = {
             method: method,
             headers: {
                 "Content-Type": "application/json",
+                Authorization: `Bearer ${localStorage.getItem("weatherToken")}`,
             },
             body: JSON.stringify(forecast),
         };
 
-        fetch(url, config)
+        fetch(url, init)
             .then((response) => {
                 if (response.ok) {
                     navigate("/forecasts");
@@ -95,11 +101,14 @@ export default function ForecastForm() {
     function handleDelete(evt) {
         evt.preventDefault();
 
-        const config = {
+        const init = {
             method: "DELETE",
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem("weatherToken")}`,
+            },
         };
 
-        fetch(`http://localhost:8080/api/forecast/${forecastId}`, config)
+        fetch(`http://localhost:8080/api/forecast/${forecastId}`, init)
             .then((response) => {
                 if (response.ok) {
                     navigate("/forecasts");

@@ -1,7 +1,5 @@
 import React, { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
-
-import Error from "../pages/Error";
 import AuthContext from "../../context/AuthContext";
 
 export default function Login() {
@@ -29,21 +27,17 @@ export default function Login() {
 
         if (response.status === 200) {
             const { jwt_token, userId } = await response.json();
-            console.log(jwt_token);
-            console.log(userId);
             auth.login(jwt_token, userId);
             navigate("/forecasts");
         } else if (response.status === 403) {
             setErrors(["Login failed."]);
-            console.log("login failed");
         } else {
             setErrors(["Unknown error."]);
-            console.log("unknown error");
         }
     };
 
     return (
-        <div className="container my-5">
+        <div className="container mt-5">
             <h2 className="text-white">Login</h2>
             {errors && errors.length > 0 && (
                 <div className="alert alert-danger">
