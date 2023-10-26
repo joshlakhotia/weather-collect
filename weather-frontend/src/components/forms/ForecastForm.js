@@ -1,15 +1,11 @@
-import { useEffect, useState, useContext } from "react";
+import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { Container, Row, Col, Button, Modal } from "react-bootstrap";
-import AuthContext from "../../context/AuthContext";
 import GoogleMapReact from "google-map-react";
 
 export default function ForecastForm() {
     const location = useLocation();
     const { collectionId, forecastId } = location.state;
-    console.log(collectionId);
-    console.log(forecastId);
-
     const [showModal, setShowModal] = useState(false);
     const [forecast, setForecast] = useState({
         name: "",
@@ -48,7 +44,6 @@ export default function ForecastForm() {
         setForecast((previous) => {
             const next = { ...previous };
             next[evt.target.name] = evt.target.value;
-            console.log(next);
             return next;
         });
     }
@@ -135,7 +130,6 @@ export default function ForecastForm() {
             const next = { ...previous };
             next.latitude = evt.lat.toFixed(6);
             next.longitude = evt.lng.toFixed(6);
-            console.log(next);
             return next;
         });
     }

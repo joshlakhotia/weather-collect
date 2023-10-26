@@ -6,9 +6,6 @@ export default function Forecast() {
     const location = useLocation();
     const { forecast, forecastData } = location.state;
 
-    console.log(forecast);
-    console.log(forecastData);
-
     return (
         <Container className="text-white">
             <Row>

@@ -43,7 +43,6 @@ export default function CollectionForm() {
         setCollection((previous) => {
             const next = { ...previous };
             next[evt.target.name] = evt.target.value;
-            console.log(next);
             return next;
         });
     }

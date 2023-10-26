@@ -7,12 +7,10 @@ import unixToTime from "./helpers/time";
 export default function ForecastCard({ forecast }) {
     const [forecastData, setForecastData] = useState();
 
-    const API_KEY = "714e8dab6cb637b9dbfbf501c2245805";
-
     useEffect(() => {
         const fetchForecast = async () => {
             const response = await fetch(
-                `http://api.openweathermap.org/data/2.5/forecast?lat=${forecast.latitude}&lon=${forecast.longitude}&appid=${API_KEY}&units=imperial`
+                `http://api.openweathermap.org/data/2.5/forecast?lat=${forecast.latitude}&lon=${forecast.longitude}&appid=${process.env.REACT_APP_OPENWEATHER_KEY}&units=imperial`
             );
 
             if (response.ok) {

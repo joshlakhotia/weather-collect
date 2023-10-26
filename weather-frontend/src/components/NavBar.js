@@ -1,7 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import AuthContext from "../context/AuthContext";
-
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
@@ -9,7 +8,6 @@ import { Button } from "react-bootstrap";
 
 function NavBar() {
     const auth = useContext(AuthContext);
-
     const navigate = useNavigate();
 
     return (

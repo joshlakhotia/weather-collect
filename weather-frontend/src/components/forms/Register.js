@@ -6,7 +6,6 @@ function Register() {
     const [password, setPassword] = useState("");
     const [confirm, setConfirm] = useState("");
     const [errors, setErrors] = useState([]);
-
     const navigate = useNavigate();
 
     const handleSubmit = async (event) => {
