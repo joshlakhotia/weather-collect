@@ -4,13 +4,13 @@ import { Link } from "react-router-dom";
 import * as Unicons from "@iconscout/react-unicons";
 import unixToTime from "./helpers/time";
 
-export default function ForecastCard({ forecast }) {
+export default function ForecastCard({ forecast, units }) {
     const [forecastData, setForecastData] = useState();
 
     useEffect(() => {
         const fetchForecast = async () => {
             const response = await fetch(
-                `http://api.openweathermap.org/data/2.5/forecast?lat=${forecast.latitude}&lon=${forecast.longitude}&appid=${process.env.REACT_APP_OPENWEATHER_KEY}&units=imperial`
+                `http://api.openweathermap.org/data/2.5/forecast?lat=${forecast.latitude}&lon=${forecast.longitude}&appid=${process.env.REACT_APP_OPENWEATHER_KEY}&units=${units}`
             );
 
             if (response.ok) {
@@ -21,7 +21,7 @@ export default function ForecastCard({ forecast }) {
         };
 
         fetchForecast();
-    }, [forecast]);
+    }, [forecast, units]);
 
     return (
         <>
@@ -76,6 +76,10 @@ export default function ForecastCard({ forecast }) {
                                                             {Math.round(
                                                                 hour.wind.speed
                                                             )}
+                                                            {units ===
+                                                            "imperial"
+                                                                ? " mph"
+                                                                : " m/s"}
                                                         </p>
                                                         <p className="mb-2">
                                                             Gust
@@ -86,6 +90,10 @@ export default function ForecastCard({ forecast }) {
                                                             {Math.round(
                                                                 hour.wind.gust
                                                             )}
+                                                            {units ===
+                                                            "imperial"
+                                                                ? " mph"
+                                                                : " m/s"}
                                                         </p>
                                                         <p className="mb-0">
                                                             Direction
@@ -96,6 +104,7 @@ export default function ForecastCard({ forecast }) {
                                                             {Math.round(
                                                                 hour.wind.deg
                                                             )}
+                                                            °
                                                         </p>
                                                     </Col>
                                                 </>

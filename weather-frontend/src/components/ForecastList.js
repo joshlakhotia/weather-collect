@@ -1,10 +1,18 @@
 import { useEffect, useState } from "react";
-import { Button, Col, Container, Row } from "react-bootstrap";
+import {
+    Button,
+    Col,
+    Container,
+    Row,
+    ToggleButton,
+    ButtonGroup,
+} from "react-bootstrap";
 import { Link } from "react-router-dom";
 import ForecastCard from "./ForecastCard";
 
 export default function ForecastList({ collectionId }) {
     const [forecastList, setForecastList] = useState([]);
+    const [units, setUnits] = useState("imperial");
 
     useEffect(() => {
         const fetchList = async () => {
@@ -34,7 +42,10 @@ export default function ForecastList({ collectionId }) {
                     {forecastList.length !== 0 ? (
                         forecastList.map((forecast) => (
                             <Row className="text-white mb-3">
-                                <ForecastCard forecast={forecast} />
+                                <ForecastCard
+                                    forecast={forecast}
+                                    units={units}
+                                />
                             </Row>
                         ))
                     ) : (
@@ -64,6 +75,36 @@ export default function ForecastList({ collectionId }) {
                         >
                             Edit This Collection
                         </Button>
+                    </Col>
+                    <Col>
+                        <ButtonGroup className="mb-3">
+                            <ToggleButton
+                                id="imperial"
+                                type="radio"
+                                variant="outline-info"
+                                name="radio"
+                                value="imperial"
+                                checked={units === "imperial"}
+                                onChange={(e) =>
+                                    setUnits(e.currentTarget.value)
+                                }
+                            >
+                                Imperial
+                            </ToggleButton>
+                            <ToggleButton
+                                id="metric"
+                                type="radio"
+                                variant="outline-info"
+                                name="radio"
+                                value="metric"
+                                checked={units === "metric"}
+                                onChange={(e) =>
+                                    setUnits(e.currentTarget.value)
+                                }
+                            >
+                                Metric
+                            </ToggleButton>
+                        </ButtonGroup>
                     </Col>
                 </Row>
             </Container>
