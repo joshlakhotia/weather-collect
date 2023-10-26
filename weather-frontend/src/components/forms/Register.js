@@ -5,6 +5,7 @@ function Register() {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [confirm, setConfirm] = useState("");
+    const [success, setSuccess] = useState(false);
     const [errors, setErrors] = useState([]);
     const navigate = useNavigate();
 
@@ -27,7 +28,10 @@ function Register() {
             );
 
             if (response.status === 201) {
-                navigate("/login");
+                setSuccess(true);
+                setTimeout(() => {
+                    navigate("/login");
+                }, 3000);
             } else if (response.status === 403) {
                 setErrors(await response.json());
             } else {
@@ -41,6 +45,16 @@ function Register() {
     return (
         <div className="container mt-5 text-white">
             <h2 className="text-white">Register</h2>
+            {success && (
+                <div className="alert alert-success">
+                    <ul className="mb-0">
+                        <li>
+                            Registration Successful. You will automatically be
+                            brought to the Login page.
+                        </li>
+                    </ul>
+                </div>
+            )}
             {errors && errors.length > 0 && (
                 <div className="alert alert-danger">
                     <ul className="mb-0">
