@@ -75,7 +75,12 @@ export default function Forecasts() {
                                 className="text-center d-grid gap-2  my-4"
                             >
                                 <Button
-                                    variant="outline-info"
+                                    variant={
+                                        collection.weatherCollectionId ===
+                                        collectionId
+                                            ? "info"
+                                            : "outline-info"
+                                    }
                                     onClick={() => {
                                         setCollectionId(
                                             collection.weatherCollectionId
