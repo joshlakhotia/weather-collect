@@ -58,15 +58,15 @@ a two hour radius of their house in Salt Lake City.
 
 ##### Task 9
 
--   [ ] Weather collections side bar (view, add, edit, delete)
+-   [x] Weather collections side bar (view, add, edit, delete)
 
 ##### Task 10
 
--   [ ] Weather forecast view
+-   [x] Weather forecast view
 
 ##### Task 11
 
--   [ ] Weather forecast add, edit, delete
+-   [x] Weather forecast add, edit, delete
 
 #### Learning Goal
 
