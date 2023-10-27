@@ -12,6 +12,8 @@ function Register() {
     const handleSubmit = async (event) => {
         event.preventDefault();
 
+        setErrors([]);
+
         if (password === confirm) {
             const response = await fetch(
                 "http://localhost:8080/create_account",
