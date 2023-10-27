@@ -3,6 +3,7 @@ import { Card, Image, Col, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import * as Unicons from "@iconscout/react-unicons";
 import unixToTime from "./helpers/time";
+import { windAlertColor } from "./helpers/color";
 
 export default function ForecastCard({ forecast, units }) {
     const [forecastData, setForecastData] = useState();
@@ -67,7 +68,12 @@ export default function ForecastCard({ forecast, units }) {
                                                         </p>
                                                     </Col>
                                                     <Col className="text-left mt-2">
-                                                        <p className="mb-2">
+                                                        <p
+                                                            className={`mb-2 rounded bg-dark text-${windAlertColor(
+                                                                hour.wind.speed,
+                                                                units
+                                                            )}`}
+                                                        >
                                                             Wind
                                                             <Unicons.UilWind
                                                                 size="14"
@@ -81,7 +87,12 @@ export default function ForecastCard({ forecast, units }) {
                                                                 ? " mph"
                                                                 : " m/s"}
                                                         </p>
-                                                        <p className="mb-2">
+                                                        <p
+                                                            className={`mb-2 rounded bg-dark text-${windAlertColor(
+                                                                hour.wind.gust,
+                                                                units
+                                                            )}`}
+                                                        >
                                                             Gust
                                                             <Unicons.UilWind
                                                                 size="14"
@@ -95,7 +106,7 @@ export default function ForecastCard({ forecast, units }) {
                                                                 ? " mph"
                                                                 : " m/s"}
                                                         </p>
-                                                        <p className="mb-0">
+                                                        <p className="mb-0 rounded text-success bg-dark">
                                                             Direction
                                                             <Unicons.UilCompass
                                                                 size="14"
