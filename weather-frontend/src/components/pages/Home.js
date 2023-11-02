@@ -53,22 +53,14 @@ function Home() {
             <Col lg={6} className="mb-3 mx-auto">
                 <h4 className="text-white text-center">Adventure</h4>
                 <p className="text-white text-center">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                    do eiusmod tempor incididunt ut labore et dolore magna
-                    aliqua. Mauris commodo quis imperdiet massa tincidunt nunc
-                    pulvinar sapien et. Consequat interdum varius sit amet
-                    mattis. Mauris pharetra et ultrices neque ornare aenean
-                    euismod. Tempor id eu nisl nunc mi. Ac tortor dignissim
-                    convallis aenean. Gravida arcu ac tortor dignissim
-                    convallis. Massa tempor nec feugiat nisl pretium fusce id.
-                    Tortor aliquam nulla facilisi cras fermentum. Nunc sed id
-                    semper risus. Enim ut sem viverra aliquet. Vel facilisis
-                    volutpat est velit egestas dui id. Mus mauris vitae
-                    ultricies leo integer malesuada nunc. Orci phasellus egestas
-                    tellus rutrum tellus pellentesque. Amet nulla facilisi morbi
-                    tempus iaculis urna id. Enim diam vulputate ut pharetra sit.
-                    Odio euismod lacinia at quis. Ac turpis egestas maecenas
-                    pharetra convallis posuere morbi leo urna.
+                    Introducing Weather Collect, the ultimate companion for
+                    outdoor enthusiasts! Whether you're an avid hiker, a
+                    dedicated cyclist, or a weekend warrior seeking adventure,
+                    WeatherWise is your go-to app for conquering the great
+                    outdoors with confidence. Our app offers a unique blend of
+                    precision and simplicity, designed to keep you in the know
+                    about weather conditions, so you can make the most of your
+                    outdoor experiences.
                 </p>
             </Col>
             <Row></Row>
